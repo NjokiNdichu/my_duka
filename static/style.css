@@ -1,0 +1,40 @@
+.main{
+    background-color:#007bff;
+    margin-top:80px;
+    
+}
+.navbar{
+    background-color: rgb(23,162,184);
+}
+.main .text_main{
+    margin-top: 130px;
+    padding: 20px;
+}
+.main .img_main{
+    padding-top: 100px;
+}
+.main_products{
+    margin-top: 100px;
+    margin-left: 00px;
+}
+.main_products .btn{
+    background-color: #007bff;
+    margin-left: 300px;
+    text-align: center;
+}
+.main_products .btn:hover{
+    background-color: blue;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+.main_products .content{
+    margin-left: 150px;
+}
+.main_products .nav{
+    background-color: rgb(51,57,62);
+   
+}
+.main_products .nav a{
+    color: red;
+    text-decoration: underline;
+}
+
