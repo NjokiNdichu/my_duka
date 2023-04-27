@@ -52,7 +52,28 @@
               <button class="btn">+ Add new item</button>
             </div>
             <div class="row-md-8">
-             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni eligendi minima quas tempora, odit corporis culpa nemo in dicta consequatur quia eum praesentium beatae est aut soluta. Ratione, architecto delectus.</p>
+              <table>
+                <thead>
+                <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>buying price</th>
+                <th>selling price</th>
+                <th>quantity</th>
+                </tr>
+                </thead>
+                <tbody>
+                  {% for i in rows %}
+                  <tr>
+                    <td>{{ i[0] }}</td>
+                    <td>{{ i[1] }}</td>
+                    <td>{{ i[2] }}</td>
+                    <td>{{ i[3] }}</td>
+                    <td>{{ i[4] }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
