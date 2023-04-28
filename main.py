@@ -26,4 +26,13 @@ def products():
     print (rows)
     return render_template('products.html', rows=rows)
 
+@app.route('/sales')
+def sales():
+    
+
+    cur = conn.cursor()
+    cur.execute("SELECT * from sales;")
+    row = cur.fetchall()
+    print (row)
+    return render_template('sales.html', row=row)
 app.run()
