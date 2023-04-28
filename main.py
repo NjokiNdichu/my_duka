@@ -12,8 +12,8 @@ except Exception as e:
 
 @app.route('/')
 def home():
-    username='Rejoice Njoki'
-    return render_template('index.html', username=username)
+    
+    return render_template('index.html')
 
 
 @app.route('/products')
@@ -35,4 +35,11 @@ def sales():
     row = cur.fetchall()
     print (row)
     return render_template('sales.html', row=row)
+
+@app.route('/save-product')
+def save_product():
+    pass
+ 
+
+
 app.run()
