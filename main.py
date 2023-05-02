@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import psycopg2
 
 app = Flask(__name__)
@@ -43,6 +43,10 @@ def save_product():
     sp=request.form['sp']
     quantity=request.form['quantity']
     print(name, bp, sp, quantity)
-    return render_template ('save-product.html', name=name, bp=bp, sp=sp, quanity=quantity)
+    cur = conn.cursor()
+    cur.execute("INSERT INTO products(name, buying_price, selling_price, quantity)values(%s, %s, %s, %s)",(name, bp, sp, quantity))
+    conn.commit()
+
+    return redirect("/products")
                                                         
-app.run()
+app.run(debug=True)
