@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import psycopg2
 
 app = Flask(__name__)
@@ -36,10 +36,13 @@ def sales():
     print (row)
     return render_template('sales.html', row=row)
 
-@app.route('/save-product')
+@app.route('/save-product', methods=['POST'])
 def save_product():
-    pass
- 
-
-
+    name=request.form['name']
+    bp=request.form['bp']
+    sp=request.form['sp']
+    quantity=request.form['quantity']
+    print(name, bp, sp, quantity)
+    return render_template ('save-product.html', name=name, bp=bp, sp=sp, quanity=quantity)
+                                                        
 app.run()
