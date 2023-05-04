@@ -38,15 +38,29 @@ def sales():
 
 @app.route('/save-product', methods=['POST'])
 def save_product():
-    name=request.form['name']
-    bp=request.form['bp']
-    sp=request.form['sp']
+        name=request.form['name']
+        bp=request.form['bp']
+        sp=request.form['sp']
+        quantity=request.form['quantity']
+        print(name, bp, sp, quantity)
+        cur = conn.cursor()
+        cur.execute("INSERT INTO products(name, buying_price, selling_price, quantity)values(%s, %s, %s, %s)",(name, bp, sp, quantity))
+        conn.commit()
+
+        return redirect("/products")
+
+@app.route('/save-sale', methods=['POST'])
+def save_sale():
+    id=request.form['id']
+    pid=request.form['pid']  
     quantity=request.form['quantity']
-    print(name, bp, sp, quantity)
-    cur = conn.cursor()
-    cur.execute("INSERT INTO products(name, buying_price, selling_price, quantity)values(%s, %s, %s, %s)",(name, bp, sp, quantity))
+    created_at=request.form['created_at']   
+    print(id, pid, quantity, created_at )  
+    cur=conn.cursor
+    cur.execute("INSERT INTO sales(id, pid, quantity, created_at)values(%s, %s, %s, %s)",(id, pid, quantity, created_at))
     conn.commit()
 
-    return redirect("/products")
-                                                        
+    return redirect("/sales")
+
+
 app.run(debug=True)
