@@ -57,7 +57,7 @@ def save_sale():
     created_at=request.form['created_at']   
     print(id, pid, quantity, created_at )  
     cur=conn.cursor
-    cur.execute("INSERT INTO sales(id, pid, quantity, created_at)values(%s, %s, %s, %s)",(id, pid, quantity, created_at))
+    cur.execute("INSERT INTO sales(id, pid, quantity, created_at)values(%s, %s, %s, %s)",(id, pid, quantity, "now()"))
     conn.commit()
 
     return redirect("/sales")
