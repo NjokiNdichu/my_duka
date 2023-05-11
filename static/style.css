@@ -17,10 +17,8 @@
     margin-top: 100px;
     margin-left: 00px;
 }
-.main_products .btn{
-    background-color: #007bff;
-    margin-left: 300px;
-    text-align: center;
+.main_products .btn_1{
+    margin:auto
 }
 .main_products .btn:hover{
     background-color: blue;
