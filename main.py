@@ -64,5 +64,28 @@ def save_sales():
 
     return redirect("/sales")
 
+@app.route('/dashboard')
+def dashboard():
+ cur = conn.cursor()
+ cur.execute("SELECT sum((p.selling_price*s.quantity)-(p.buying_price*s.quantity))as total,p.name FROM products as p join sales as s on s.pid=p.id group by p.name;")
+ rows = cur.fetchall()
+ a = []
+ b = []
+ for i in rows:
+    a.append(i[1])
+    b.append(float(i[0]))
+ print(a,b)
+ cur.execute("SELECT SUM(p.selling_price * s.Quantity) as salesperday,created_at FROM  products  as p JOIN sales as s ON s.pid = p.id GROUP BY created_at;")
+ rows = cur.fetchall()
+ c = []
+ d = []
+ for i in rows:
+    c.append(i[1])
+    d.append(float(i[0]))
+
+ print(c,d)
+
+ return render_template("dashboard.html",products=a,profit=b,days=c,sales=d)
+
 
 app.run(debug=True)
